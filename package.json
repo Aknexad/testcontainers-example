@@ -1,0 +1,30 @@
+{
+  "name": "integration-testing-docker",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest --detectOpenHandles",
+    "start": "npm run build && node dist/run.js",
+    "dev": "ts-node-dev --poll --env-file=.env  src/server.ts",
+    "build": "rimraf ./dist && npx tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.1",
+    "mongoose": "^8.7.2"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.7.8",
+    "testcontainers": "^10.13.2",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.6.3"
+  }
+}
