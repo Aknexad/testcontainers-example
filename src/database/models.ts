@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
 
 interface ITags {
-  workspaceId: mongoose.Schema.Types.ObjectId;
   key: string;
 }
 
