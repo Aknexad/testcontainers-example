@@ -1,19 +1,19 @@
-import express, { Request, Response, NextFunction } from 'express';
+import express from 'express';
 
-import { configObject } from './config';
+import { PORT } from './config';
+import { databaseConnection } from './database';
+import router from './routers';
 
-const app = express();
+async function start() {
+  const app = express();
 
-app.use(express.json());
+  app.use(express.json());
 
-app.post('/add', async (req: Request, res: Response, next: NextFunction) => {
-  try {
-    const result = {};
+  await databaseConnection.connectToDatabase();
 
-    res.status(200).json({ message: 'successors', data: result });
-  } catch (error) {}
-});
+  app.use(router());
 
-app.listen(configObject.PORT, () =>
-  console.log(`service run on port ${configObject.PORT}`)
-);
+  app.listen(PORT, () => console.log(`service run on port ${PORT}`));
+}
+
+start();
