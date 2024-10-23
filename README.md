@@ -1,0 +1,2 @@
+# testcontainers-example
+testcontainers=example
